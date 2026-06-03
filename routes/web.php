@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KeluhanController;
 
 Route::get('/', [MasyarakatController::class, 'index'])->name('masyarakat.index');
 
@@ -19,5 +20,8 @@ Route::get('/masyarakat/{id}/edit', [MasyarakatController::class, 'edit'])->name
 Route::put('/masyarakat/{id}', [MasyarakatController::class, 'update'])->name('masyarakat.update');
 
 Route::delete('/masyarakat/{id}', [MasyarakatController::class, 'destroy'])->name('masyarakat.destroy');
-Auth::routes();
 
+Route::post('/keluhan/store', [KeluhanController::class, 'store'])->name('keluhan.store');
+
+Route::resource('keluhan', KeluhanController::class);
+Auth::routes();

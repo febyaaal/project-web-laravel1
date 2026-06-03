@@ -18,7 +18,15 @@ class MasyarakatController extends Controller
     {
         $genders = ['Laki-laki', 'Perempuan'];
         return view('masyarakat_create', compact('genders'));
+
     }
+    
+    public function show(int $id)
+{
+    $masyarakat = Masyarakat::findOrFail($id);
+    return view('masyarakat_show', compact('masyarakat'));
+}
+
 
     public function store(Request $request): RedirectResponse
 {
